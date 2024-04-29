@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "GitLoader"
 include(":app")
- 
+include(":data")
+include(":domain")

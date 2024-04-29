@@ -1,4 +1,4 @@
-package com.vaskorr.gitloader
+package com.vaskorr.gitloader.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
