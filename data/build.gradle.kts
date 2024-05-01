@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -33,6 +34,10 @@ android {
 }
 
 dependencies {
+    implementation("com.google.dagger:dagger:2.51.1")
+    kapt("com.google.dagger:dagger-compiler:2.51.1")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.google.code.gson:gson:2.10.1")
     implementation(project(path = ":domain"))
     implementation("androidx.core:core-ktx:1.9.0")
     testImplementation("junit:junit:4.13.2")
