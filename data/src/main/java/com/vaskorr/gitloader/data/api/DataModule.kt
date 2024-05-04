@@ -7,19 +7,16 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.binds
+import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.module
 
-@Module(includes = [DataModuleInterface::class])
-class DataModule {
-
-    @Provides
-    fun getHttpClient(): OkHttpClient{
-        return OkHttpClient()
+val dataModule = module {
+    single { GitApi(apiKey = getProperty("GIT_API_TOKEN"), client = get())}
+    factoryOf(::OkHttpClient)
+    singleOf(::RemoteRepositoryImpl) {
+        bind<RemoteRepository>()
     }
-}
-
-@Module
-internal interface DataModuleInterface{
-    fun getGitApi(): GitApi
-    @Binds
-    fun provideRemoteRepository(impl: RemoteRepositoryImpl): RemoteRepository
 }

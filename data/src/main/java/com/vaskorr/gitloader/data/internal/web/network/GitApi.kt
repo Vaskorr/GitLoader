@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken
 import com.vaskorr.gitloader.data.internal.web.model.Repository
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import org.koin.java.KoinJavaComponent.getKoin
 import java.io.IOException
 import java.lang.reflect.Type
 import javax.inject.Inject
@@ -13,7 +14,7 @@ import javax.inject.Inject
 
 internal class GitApi @Inject constructor(
     private val client: OkHttpClient,
-    private val apiKey: String
+    private val apiKey: String,
 ){
     fun getUserRepositories(username: String): List<Repository>{
         val request = Request.Builder()

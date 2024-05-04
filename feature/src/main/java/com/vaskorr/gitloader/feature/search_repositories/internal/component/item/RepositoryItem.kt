@@ -11,14 +11,12 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.vaskorr.gitloader.ui.theme.GitLoaderTheme
 
 @Composable
 fun RepositoryItem(
@@ -73,11 +71,9 @@ fun RepositoryItem(
 @Preview(showBackground = true, widthDp = 400, heightDp = 700)
 @Composable
 fun SplashScreenPreview() {
-    com.vaskorr.gitloader.ui.theme.GitLoaderTheme {
-        RepositoryItem(
-            "Calculator",
-            {},
-            {}
-        )
-    }
+    RepositoryItem(
+        "Calculator",
+        {},
+        {}
+    )
 }

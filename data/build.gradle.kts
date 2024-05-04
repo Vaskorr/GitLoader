@@ -34,6 +34,8 @@ android {
 }
 
 dependencies {
+    val koin_version = "3.3.2"
+    implementation("io.insert-koin:koin-android:$koin_version")
     implementation("com.google.dagger:dagger:2.51.1")
     kapt("com.google.dagger:dagger-compiler:2.51.1")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")

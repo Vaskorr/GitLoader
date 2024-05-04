@@ -1,7 +1,7 @@
 package com.vaskorr.gitloader.feature.search_repositories.internal.screen.search_screen
 
 import androidx.compose.runtime.Immutable
-import com.vaskorr.domain.model.GitRepository
+import com.vaskorr.gitloader.domain.model.GitRepository
 
 @Immutable
 data class SearchState(

@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.vaskorr.gitloader.ui.theme.GitLoaderTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,10 +36,8 @@ fun SearchTextField(
 @Preview(showBackground = true, widthDp = 400, heightDp = 700)
 @Composable
 fun SplashScreenPreview() {
-    com.vaskorr.gitloader.ui.theme.GitLoaderTheme {
-        SearchTextField(
-            "Calculator",
-            {}
-        )
-    }
+    SearchTextField(
+        "Calculator",
+        {}
+    )
 }

@@ -2,21 +2,17 @@ package com.vaskorr.gitloader.feature.search_repositories.internal.screen.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vaskorr.domain.usecase.RemoteRepository
-import com.vaskorr.gitloader.GitLoaderApplication
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.vaskorr.gitloader.domain.usecase.RemoteRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-@HiltViewModel
-class SearchViewModel : ViewModel() {
-    @Inject
-    lateinit var repository: RemoteRepository
+class SearchViewModel (
+    private val repository: RemoteRepository
+) : ViewModel() {
     private val _uiState = MutableStateFlow(SearchState())
     val uiState = _uiState.asStateFlow()
 
@@ -27,7 +23,6 @@ class SearchViewModel : ViewModel() {
     }
 
     init {
-        GitLoaderApplication().component.inject(this)
         viewModelScope.launch {
             val uiState: SearchState
             withContext(Dispatchers.IO) {
