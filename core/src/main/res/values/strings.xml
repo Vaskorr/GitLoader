@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">GitLoader</string>
+    <string name="user_not_found">Пользователь не найден</string>
+    <string name="open">Открыть</string>
+    <string name="download">Скачать</string>
 </resources>

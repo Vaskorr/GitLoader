@@ -30,7 +30,7 @@ fun SearchTextField(
         singleLine = true,
         shape = RoundedCornerShape(8.dp),
         leadingIcon = { LeadingIcon(onSearch) },
-        trailingIcon = { TrailingIcon() }
+        trailingIcon = { TrailingIcon(onTextClear) }
     )
 }
 
@@ -47,8 +47,10 @@ private fun LeadingIcon(
 }
 
 @Composable
-private fun TrailingIcon() {
-    IconButton(onClick = { /*TODO*/ }) {
+private fun TrailingIcon(
+    onTextClear: () -> Unit
+) {
+    IconButton(onClick = { onTextClear }) {
         Icon(
             painter = painterResource(id = R.drawable.close),
             contentDescription = "icon"
