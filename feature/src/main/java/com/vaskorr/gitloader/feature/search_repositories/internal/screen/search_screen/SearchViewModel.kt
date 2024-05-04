@@ -22,16 +22,36 @@ class SearchViewModel (
         }
     }
 
-    init {
+    fun onSearch(){
         viewModelScope.launch {
-            val uiState: SearchState
+            val uiStateNew: SearchState
             withContext(Dispatchers.IO) {
-                uiState = SearchState(
-                    "Dimasik", repository.getUserRepositories("NewRonin").body.repositories
+                uiStateNew = SearchState(
+                    searchField = uiState.value.searchField, repositories = repository.getUserRepositories(uiState.value.searchField).body.repositories
                 )
             }
             _uiState.update {
-                uiState.copy(searchField = "LOL")
+                uiStateNew
+            }
+        }
+    }
+
+    fun onTextClear(){
+        _uiState.update {
+            uiState.value.copy(searchField = "")
+        }
+    }
+
+    init {
+        viewModelScope.launch {
+            val uiStateNew: SearchState
+            withContext(Dispatchers.IO) {
+                uiStateNew = SearchState(
+                    "Vaskorr", repository.getUserRepositories("Vaskorr").body.repositories
+                )
+            }
+            _uiState.update {
+                uiStateNew
             }
         }
     }

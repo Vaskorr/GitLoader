@@ -22,6 +22,12 @@ fun SearchScreen(
             searchText = uiState.searchField,
             onSearchTextChanged = {
                 viewModel.onSearchTextChanged(it)
+            },
+            onSearch = {
+                viewModel.onSearch()
+            },
+            onTextClear = {
+                viewModel.onTextClear()
             }
         )
         if (uiState.repositories.isNotEmpty()) {
