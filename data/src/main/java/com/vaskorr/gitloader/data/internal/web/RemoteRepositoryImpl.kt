@@ -14,18 +14,21 @@ internal class RemoteRepositoryImpl @Inject constructor(
 ) : RemoteRepository {
     override fun getUserRepositories(username: String): NetworkResponse<GitUser> {
         val repList = gitApi.getUserRepositories(username)
-        val gitUserName = repList[0].owner?.login
-        val repositoryList = mutableListOf<GitRepository>()
-        repList.forEach {
-            repositoryList.add(
-                GitRepository(
-                it.name!!,
-                it.owner?.login!!,
-                URL(it.url),
-                null
-            )
-            )
+        if (repList.isNotEmpty()){
+            val gitUserName = repList[0].owner?.login
+            val repositoryList = mutableListOf<GitRepository>()
+            repList.forEach {
+                repositoryList.add(
+                    GitRepository(
+                        it.name!!,
+                        it.owner?.login!!,
+                        URL(it.url),
+                        null
+                    )
+                )
+            }
+            return NetworkResponse(NetworkResponseStatus.SUCCESS, GitUser(gitUserName!!, repositoryList))
         }
-        return NetworkResponse(NetworkResponseStatus.SUCCESS, GitUser(gitUserName!!, repositoryList))
+        return NetworkResponse(NetworkResponseStatus.FAILED, GitUser("", emptyList()))
     }
 }
