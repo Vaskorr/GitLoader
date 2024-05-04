@@ -1,4 +1,4 @@
-package com.vaskorr.gitloader.ui.theme
+package com.vaskorr.gitloader.core.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.vaskorr.gitloader.feature"
+    namespace = "com.vaskorr.gitloader.core"
     compileSdk = 33
 
     defaultConfig {
@@ -39,20 +39,11 @@ android {
 }
 
 dependencies {
-    implementation(project(path = ":domain"))
-    implementation(project(path = ":core"))
-    val koin_version = "3.3.2"
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0-rc01")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-    implementation("io.insert-koin:koin-android:$koin_version")
-    implementation("io.insert-koin:koin-androidx-compose:3.4.1")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")

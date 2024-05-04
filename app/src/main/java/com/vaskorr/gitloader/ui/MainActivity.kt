@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.vaskorr.gitloader.feature.search_repositories.internal.screen.search_screen.SearchScreen
-import com.vaskorr.gitloader.ui.theme.GitLoaderTheme
+import com.vaskorr.gitloader.core.theme.GitLoaderTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +40,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    GitLoaderTheme {
+    com.vaskorr.gitloader.core.theme.GitLoaderTheme {
         Greeting("Android")
     }
 }

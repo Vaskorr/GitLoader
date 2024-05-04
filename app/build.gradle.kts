@@ -53,14 +53,14 @@ android {
 }
 
 dependencies {
-    val koin_version = "3.3.2"
-    implementation("io.insert-koin:koin-android:$koin_version")
+    implementation("io.insert-koin:koin-android:3.3.2")
     implementation("com.google.dagger:dagger:2.51.1")
-    implementation(project(mapOf("path" to ":data")))
     kapt("com.google.dagger:dagger-compiler:2.51.1")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation(project(path = ":domain"))
     implementation(project(path = ":feature"))
+    implementation(project(path = ":core"))
+    implementation(project(path = ":data"))
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0-rc01")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
