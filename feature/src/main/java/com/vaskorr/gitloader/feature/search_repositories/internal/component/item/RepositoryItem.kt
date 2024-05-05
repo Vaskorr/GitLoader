@@ -15,8 +15,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.vaskorr.gitloader.core.R
 
 @Composable
 fun RepositoryItem(
@@ -55,13 +57,13 @@ fun RepositoryItem(
                     onClick = onWebOpen,
                     shape = RoundedCornerShape(8.dp)
                 ) {
-                    Text(text = "Открыть")
+                    Text(text = stringResource(id = R.string.open))
                 }
                 Button(
                     onClick = onDownload,
                     shape = RoundedCornerShape(8.dp)
                 ) {
-                    Text(text = "Скачать")
+                    Text(text = stringResource(id = R.string.download))
                 }
             }
         }

@@ -48,18 +48,4 @@ class SearchViewModel (
         }
     }
 
-    init {
-        viewModelScope.launch {
-            val uiStateNew: SearchState
-            withContext(Dispatchers.IO) {
-                uiStateNew = SearchState(
-                    "Vaskorr", repository.getUserRepositories("Vaskorr").body.repositories
-                )
-            }
-            _uiState.update {
-                uiStateNew
-            }
-        }
-    }
-
 }
