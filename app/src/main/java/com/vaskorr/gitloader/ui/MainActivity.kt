@@ -10,19 +10,37 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.vaskorr.gitloader.core.theme.GitLoaderTheme
 import com.vaskorr.gitloader.feature.search_repositories.internal.screen.search_screen.SearchScreen
+import kotlinx.coroutines.coroutineScope
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         setContent {
+            val navController = rememberNavController()
             GitLoaderTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    SearchScreen()
+                    NavHost(
+                        navController = navController,
+                        startDestination = "search_repositories"
+                    ){
+                        composable("search_repositories"){
+                            SearchScreen()
+                        }
+                        composable("downloaded_repositories"){
+
+                        }
+                    }
+
                 }
             }
         }
