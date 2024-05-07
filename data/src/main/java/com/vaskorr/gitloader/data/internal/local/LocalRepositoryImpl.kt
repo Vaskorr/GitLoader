@@ -1,15 +1,18 @@
 package com.vaskorr.gitloader.data.internal.local
 
+import android.os.Environment
+import android.util.Log
 import com.vaskorr.gitloader.data.internal.local.db.RepositoryDao
 import com.vaskorr.gitloader.data.internal.local.model.Repository
 import com.vaskorr.gitloader.domain.model.GitRepository
 import com.vaskorr.gitloader.domain.usecase.LocalRepository
+import java.io.File
 import java.net.URI
 import java.net.URL
 
-internal class LocalRepositoryImpl (
+internal class LocalRepositoryImpl(
     private val repositoryDao: RepositoryDao
-): LocalRepository {
+) : LocalRepository {
     override fun getDownloadedRepositories(): List<GitRepository> {
         val repositoryList = mutableListOf<GitRepository>()
         repositoryDao.getAll().forEach {
@@ -37,6 +40,14 @@ internal class LocalRepositoryImpl (
     }
 
     override fun deleteRepository(repository: GitRepository) {
-        TODO("Not yet implemented")
+        Log.d("DELETE", repository.toString())
+        repositoryDao.deleteByName(repository.owner, repository.label).toString()
+        Log.d("OSTALOS", getDownloadedRepositories().toString())
+        val uri = "${
+            Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOWNLOADS
+            )
+        }/${repository.label}.zip"
+        File(uri).delete()
     }
 }

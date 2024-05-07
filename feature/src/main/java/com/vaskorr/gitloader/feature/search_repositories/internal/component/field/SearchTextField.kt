@@ -19,7 +19,7 @@ import com.vaskorr.gitloader.core.theme.GitLoaderTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchTextField(
+internal fun SearchTextField(
     searchText: String,
     onSearchTextChanged: (searchText: String) -> Unit,
     onTextClear: () -> Unit,
@@ -34,7 +34,7 @@ fun SearchTextField(
         shape = RoundedCornerShape(8.dp),
         leadingIcon = { LeadingIcon(onSearch) },
         trailingIcon = { TrailingIcon(onTextClear) },
-        placeholder = { Text(text = stringResource(id = R.string.search))},
+        placeholder = { Text(text = stringResource(id = R.string.search)) },
         keyboardActions = KeyboardActions(
             onDone = {
                 onSearch()
@@ -69,7 +69,7 @@ private fun TrailingIcon(
 
 @Preview(showBackground = true, widthDp = 400, heightDp = 700)
 @Composable
-fun SplashScreenPreview() {
+private fun SplashScreenPreview() {
     GitLoaderTheme {
         SearchTextField(
             "Calculator",

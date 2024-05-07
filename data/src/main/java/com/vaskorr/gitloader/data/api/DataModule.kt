@@ -15,7 +15,7 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 val dataModule = module {
-    single { GitApi(apiKey = getProperty("GIT_API_TOKEN"), client = get()) }
+    singleOf(::GitApi)
     factoryOf(::OkHttpClient)
     singleOf(::RemoteRepositoryImpl) {
         bind<RemoteRepository>()

@@ -1,6 +1,6 @@
 package com.vaskorr.gitloader.domain.model
 
-enum class NetworkResponseStatus{
+enum class NetworkResponseStatus {
     SUCCESS, FAILED
 }
 
