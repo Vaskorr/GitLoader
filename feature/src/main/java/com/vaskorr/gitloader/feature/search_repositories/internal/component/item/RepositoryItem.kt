@@ -68,8 +68,7 @@ internal fun RepositoryItem(
                 if (isLocal) {
                     Button(
                         onClick = {
-                            onDownload()
-                            Toast.makeText(context, downloading_string, Toast.LENGTH_LONG).show()
+                            onDelete()
                         },
                         shape = RoundedCornerShape(8.dp)
                     ) {
@@ -78,7 +77,7 @@ internal fun RepositoryItem(
                 } else {
                     Button(
                         onClick = {
-                            onDelete()
+                            onDownload()
                             Toast.makeText(context, downloading_string, Toast.LENGTH_LONG).show()
                         },
                         shape = RoundedCornerShape(8.dp)

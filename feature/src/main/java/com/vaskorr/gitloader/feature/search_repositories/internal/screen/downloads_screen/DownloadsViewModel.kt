@@ -1,5 +1,6 @@
 package com.vaskorr.gitloader.feature.search_repositories.internal.screen.downloads_screen
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vaskorr.gitloader.domain.model.GitRepository
@@ -28,7 +29,8 @@ internal class DownloadsViewModel(
         }
     }
 
-    fun onDelete(gitRepository: GitRepository){
+    fun onDelete(gitRepository: GitRepository) {
+        Log.d("DELETE!", gitRepository.toString())
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 localRepository.deleteRepository(repository = gitRepository)

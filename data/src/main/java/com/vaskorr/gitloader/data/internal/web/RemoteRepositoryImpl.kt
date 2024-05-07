@@ -42,14 +42,14 @@ internal class RemoteRepositoryImpl @Inject constructor(
 
     override fun downloadRepository(repository: GitRepository) {
         val download_url = "${repository.url}/zipball"
+        val uri = "${Environment.getExternalStoragePublicDirectory(
+            Environment.DIRECTORY_DOWNLOADS
+        )}/${repository.label}.zip"
+
         repository.url.openStream().use {
             Channels.newChannel(it).use { rbc ->
                 FileOutputStream(
-                    URI(
-                        "${Environment.getExternalStoragePublicDirectory(
-                            Environment.DIRECTORY_DOWNLOADS
-                        )}/${repository.label}.zip"
-                    ).path).use { fos ->
+                    URI(uri).path).use { fos ->
                     fos.channel.transferFrom(rbc, 0, Long.MAX_VALUE)
                 }
             }

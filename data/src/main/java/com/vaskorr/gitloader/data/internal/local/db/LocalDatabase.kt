@@ -16,8 +16,8 @@ interface RepositoryDao {
     @Insert
     fun insert(vararg repository: Repository)
 
-    @Delete
-    fun delete(repository: Repository)
+    @Query("DELETE FROM repository WHERE owner = :owner AND label = :label")
+    fun deleteByName(owner: String, label: String)
 }
 
 @Database(entities = [Repository::class], version = 1)
