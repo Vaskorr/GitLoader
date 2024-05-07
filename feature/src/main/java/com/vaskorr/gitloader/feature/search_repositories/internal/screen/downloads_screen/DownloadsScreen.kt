@@ -9,7 +9,11 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 internal fun DownloadsScreen(
     viewModel: DownloadsViewModel = koinViewModel()
-){
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    RepositoryList(repositoryList = uiState.repositoryList, onWebOpen = {}, onDelete = {}, isLocal = true)
+    RepositoryList(
+        repositoryList = uiState.repositoryList,
+        onDelete = {viewModel.onDelete(it)},
+        isLocal = true
+    )
 }

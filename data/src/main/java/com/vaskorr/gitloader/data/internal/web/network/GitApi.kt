@@ -13,14 +13,12 @@ import javax.inject.Inject
 
 
 internal class GitApi @Inject constructor(
-    private val client: OkHttpClient,
-    private val apiKey: String,
+    private val client: OkHttpClient
 ){
     fun getUserRepositories(username: String): List<Repository>{
         val request = Request.Builder()
             .url("https://api.github.com/users/$username/repos")
             .addHeader("accept", "application/json")
-            .addHeader("Authorization", "bearer $apiKey")
             .build()
 
         var body: String

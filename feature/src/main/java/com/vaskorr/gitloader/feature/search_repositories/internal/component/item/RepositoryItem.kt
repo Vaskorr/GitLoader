@@ -78,7 +78,7 @@ internal fun RepositoryItem(
                 } else {
                     Button(
                         onClick = {
-                            onDownload()
+                            onDelete()
                             Toast.makeText(context, downloading_string, Toast.LENGTH_LONG).show()
                         },
                         shape = RoundedCornerShape(8.dp)

@@ -23,7 +23,6 @@ class GitLoaderApplication : Application() {
             androidContext(applicationContext)
             androidLogger(if (BuildConfig.DEBUG) Level.DEBUG else Level.NONE)
             addModules()
-            fileProperties()
         }
     }
 
