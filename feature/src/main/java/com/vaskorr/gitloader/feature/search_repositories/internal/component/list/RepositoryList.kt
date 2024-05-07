@@ -14,14 +14,14 @@ import java.net.URL
 fun RepositoryList(
     repositoryList: List<GitRepository>,
     onWebOpen: (url: URL) -> Unit,
-    onDownload: (uri: URI?) -> Unit
+    onDownload: (GitRepository) -> Unit
 ) {
     LazyColumn {
         items(items = repositoryList, itemContent = {
             RepositoryItem(
                 name = "${it.owner}/${it.label}",
                 onWebOpen = { onWebOpen(it.url) },
-                onDownload = { onDownload(it.downloadedFileUri) })
+                onDownload = { onDownload(it) })
         })
     }
 }

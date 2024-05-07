@@ -48,4 +48,13 @@ class SearchViewModel (
         }
     }
 
+    fun onDownload(gitRepository: GitRepository){
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                repository.downloadRepository(gitRepository)
+                localRepository.addRepository(gitRepository)
+            }
+        }
+    }
+
 }

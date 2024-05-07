@@ -35,7 +35,7 @@ fun SearchScreen(
             }
         )
         if (uiState.repositories.isNotEmpty()) {
-            RepositoryList(repositoryList = uiState.repositories, onWebOpen = {}, onDownload = {})
+            RepositoryList(repositoryList = uiState.repositories, onWebOpen = {}, onDownload = {viewModel.onDownload(it)})
         }else{
             Text(
                 text = stringResource(id = R.string.user_not_found),
