@@ -10,9 +10,9 @@ import java.io.File
 import java.net.URI
 import java.net.URL
 
-internal class LocalRepositoryImpl (
+internal class LocalRepositoryImpl(
     private val repositoryDao: RepositoryDao
-): LocalRepository {
+) : LocalRepository {
     override fun getDownloadedRepositories(): List<GitRepository> {
         val repositoryList = mutableListOf<GitRepository>()
         repositoryDao.getAll().forEach {
@@ -45,8 +45,9 @@ internal class LocalRepositoryImpl (
         Log.d("OSTALOS", getDownloadedRepositories().toString())
         val uri = "${
             Environment.getExternalStoragePublicDirectory(
-            Environment.DIRECTORY_DOWNLOADS
-        )}/${repository.label}.zip"
+                Environment.DIRECTORY_DOWNLOADS
+            )
+        }/${repository.label}.zip"
         File(uri).delete()
     }
 }

@@ -13,7 +13,7 @@ internal fun DownloadsScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     RepositoryList(
         repositoryList = uiState.repositoryList,
-        onDelete = {viewModel.onDelete(it)},
+        onDelete = { viewModel.onDelete(it) },
         isLocal = true
     )
 }
