@@ -23,10 +23,12 @@ import androidx.compose.ui.unit.dp
 import com.vaskorr.gitloader.core.R
 
 @Composable
-fun RepositoryItem(
+internal fun RepositoryItem(
     name: String,
     onWebOpen: () -> Unit,
-    onDownload: () -> Unit
+    onDownload: () -> Unit = {},
+    onDelete: () -> Unit = {},
+    isLocal: Boolean = false
 ) {
     val context = LocalContext.current
     val downloading_string = stringResource(id = R.string.downloading)
@@ -63,14 +65,26 @@ fun RepositoryItem(
                 ) {
                     Text(text = stringResource(id = R.string.open))
                 }
-                Button(
-                    onClick = {
-                        onDownload()
-                        Toast.makeText(context, downloading_string, Toast.LENGTH_LONG).show()
-                    },
-                    shape = RoundedCornerShape(8.dp)
-                ) {
-                    Text(text = stringResource(id = R.string.download))
+                if (isLocal) {
+                    Button(
+                        onClick = {
+                            onDownload()
+                            Toast.makeText(context, downloading_string, Toast.LENGTH_LONG).show()
+                        },
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(text = stringResource(id = R.string.delete))
+                    }
+                } else {
+                    Button(
+                        onClick = {
+                            onDownload()
+                            Toast.makeText(context, downloading_string, Toast.LENGTH_LONG).show()
+                        },
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(text = stringResource(id = R.string.download))
+                    }
                 }
             }
         }
@@ -79,7 +93,7 @@ fun RepositoryItem(
 
 @Preview(showBackground = true, widthDp = 400, heightDp = 700)
 @Composable
-fun SplashScreenPreview() {
+private fun SplashScreenPreview() {
     RepositoryItem(
         name = "Calculator",
         onDownload = {},

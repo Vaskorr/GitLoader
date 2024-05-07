@@ -4,7 +4,7 @@ import androidx.compose.runtime.Immutable
 import com.vaskorr.gitloader.domain.model.GitRepository
 
 @Immutable
-data class SearchState(
+internal data class SearchState(
     val searchField: String = "",
     val repositories: List<GitRepository> = emptyList()
 )

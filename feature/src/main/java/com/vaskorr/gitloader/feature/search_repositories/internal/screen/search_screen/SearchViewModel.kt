@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 import java.net.URI
 import java.net.URL
 
-class SearchViewModel (
+internal class SearchViewModel (
     private val repository: RemoteRepository,
     private val localRepository: LocalRepository
 ) : ViewModel() {

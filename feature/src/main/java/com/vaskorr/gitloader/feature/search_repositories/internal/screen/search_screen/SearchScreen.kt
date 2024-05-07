@@ -15,7 +15,7 @@ import com.vaskorr.gitloader.feature.search_repositories.internal.component.fiel
 import com.vaskorr.gitloader.feature.search_repositories.internal.component.list.RepositoryList
 
 @Composable
-fun SearchScreen(
+internal fun SearchScreen(
     viewModel: SearchViewModel = koinViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()

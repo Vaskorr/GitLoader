@@ -11,24 +11,28 @@ import java.net.URL
 
 
 @Composable
-fun RepositoryList(
+internal fun RepositoryList(
     repositoryList: List<GitRepository>,
     onWebOpen: (url: URL) -> Unit,
-    onDownload: (GitRepository) -> Unit
+    onDownload: (GitRepository) -> Unit = {},
+    onDelete: (GitRepository) -> Unit = {},
+    isLocal: Boolean = false
 ) {
     LazyColumn {
         items(items = repositoryList, itemContent = {
             RepositoryItem(
                 name = "${it.owner}/${it.label}",
                 onWebOpen = { onWebOpen(it.url) },
-                onDownload = { onDownload(it) })
+                onDownload = { onDownload(it) },
+                onDelete = { onDelete(it) },
+                isLocal = isLocal)
         })
     }
 }
 
 @Preview(showBackground = true, widthDp = 400, heightDp = 700)
 @Composable
-fun SplashScreenPreview() {
+private fun SplashScreenPreview() {
     RepositoryList(
         repositoryList = listOf(
             GitRepository("123", "ya", URL("http://vk.com"), URI("file://vk.com")),
